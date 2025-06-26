@@ -4,32 +4,49 @@ import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [messages, setMessages] = useState([
+    { id: 1, text: "Ciao! Come stai?", sender: "received" },
+    { id: 2, text: "Tutto bene, grazie! E tu?", sender: "sent" },
+  ]);
+  const [input, setInput] = useState('');
+
+  const handleSend = () => {
+    if (input.trim() === '') return;
+
+    const newMessage = {
+      id: messages.length + 1,
+      text: input,
+      sender: "sent",
+    };
+
+    setMessages([...messages, newMessage]);
+    setInput('');
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="chat-container">
+      <div className="messages-list">
+        {messages.map((msg) => (
+          <div
+            key={msg.id}
+            className={`message-bubble ${msg.sender === 'sent' ? 'sent' : 'received'}`}
+          >
+            {msg.text}
+          </div>
+        ))}
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
+      <div className="input-area">
+        <input
+          type="text"
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+          onKeyDown={(e) => e.key === 'Enter' && handleSend()}
+          placeholder="Scrivi un messaggio..."
+        />
+        <button onClick={handleSend}>Invia</button>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </div>
+  );
 }
 
-export default App
+export default App;
