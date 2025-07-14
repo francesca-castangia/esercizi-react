@@ -22,7 +22,7 @@ export default function App() {
       
 
       {/* Counter */}
-      <section style={{ marginBottom: "20px" }}>
+      <section>
         
         <p>Counter: {count}</p>
         <button onClick={increment}>+1</button>
@@ -31,7 +31,7 @@ export default function App() {
       </section>
 
       {/* Form */}
-      <section style={{ marginBottom: "20px" }}>
+      <section>
         
         <input
           name="username"
@@ -49,7 +49,7 @@ export default function App() {
         />
         <div>
           <strong>Current values:</strong>
-          <pre>{JSON.stringify(values, null, 2)}</pre>
+          <pre>{JSON.stringify(values)}</pre>
         </div>
       </section>
 
@@ -60,18 +60,16 @@ export default function App() {
           type="text"
           placeholder="GitHub username"
           onKeyDown={(e) => {
-            if (e.key === "Enter") {
               fetchUser(e.target.value);
-            }
           }}
           
         />
         <button onClick={() => fetchUser(values.username)}>Fetch User from Form Username</button>
         {githubLoading && <p>Loading GitHub user...</p>}
-        {githubError && <p style={{ color: "red" }}>Error: {githubError}</p>}
+        {githubError && <p>Error: {githubError}</p>}
         {user && (
           <div >
-            <img src={user.avatar_url} alt={user.login} width={50} style={{ borderRadius: "50%" }} />
+            <img src={user.avatar_url} alt={user.login} />
             <div><strong>Name:</strong> {user.name || "N/A"}</div>
             <div><strong>Login:</strong> {user.login}</div>
           </div>
@@ -83,7 +81,7 @@ export default function App() {
        
         <button onClick={getLocation}>Get Current Location</button>
         {locationLoading && <p>Getting location...</p>}
-        {locationError && <p style={{ color: "red" }}>Error: {locationError}</p>}
+        {locationError && <p>Error: {locationError}</p>}
         {location && (
           <p>
             Latitude: {location.latitude} <br />
