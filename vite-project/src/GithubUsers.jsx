@@ -7,14 +7,14 @@ export function GithubUsers(){
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (input.trim() && !usernames.includes(input.trim())) {
-      setUsernames([input.trim(), ...usernames]);
+    
+      setUsernames([...usernames, input]);
       setInput("");
-    }
+    
   };
 
   return (
-    <div style={{ maxWidth: "400px", margin: "0 auto" }}>
+    <div>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
