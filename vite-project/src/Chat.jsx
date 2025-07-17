@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 function Chat() {
   const [messages, setMessages] = useState([
@@ -6,6 +6,7 @@ function Chat() {
     { id: 2, text: "Tutto bene, grazie! E tu?", sender: "sent" },
   ]);
   const [input, setInput] = useState('');
+  const chatEndRef= useRef(null);
 
   const handleSend = () => {
     if (input.trim() === '') return;
@@ -20,6 +21,11 @@ function Chat() {
     setInput('');
   };
 
+  useEffect(() => {
+    chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages]);
+
+
   return (
     <div className="chat-container">
       <div className="messages-list">
@@ -31,6 +37,7 @@ function Chat() {
             {msg.text}
           </div>
         ))}
+        <div ref={chatEndRef} />
       </div>
       <div className="input-area">
         <input
