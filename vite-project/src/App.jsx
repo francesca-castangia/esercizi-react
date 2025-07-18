@@ -5,6 +5,7 @@ import Welcome from './components/Welcome'
 import { Counter } from './components/Counter'
 import ShowGithubUser from './components/ShowGithubUser'
 import { GithubUser } from './components/GithubUser'
+import GithubUserList from './components/GithubUserList'
 function App() {
   const username = "Francesca"
 
@@ -20,7 +21,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Welcome name={username} /> }  />
         <Route path="/counter" element={<Counter />} />
-        <Route path="/users/" element={<GithubUser />}>
+        <Route path="/users/" element={<GithubUserList />}>
           <Route path=":username" element={<ShowGithubUser />}/>
           <Route index element={<p>Add a user and select it</p>}/>
         </Route>

@@ -8,7 +8,7 @@ export function Counter({initialValue = 0, incrementAmount = 1}) {
     };
 
     const decrementCounter = () => {
-        setCounter(per => prev - incrementAmount);
+        setCounter(prev => prev - incrementAmount);
     };
 
     const resetCounter = () => {
