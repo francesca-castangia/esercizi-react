@@ -5,7 +5,7 @@ import App from './App.jsx'
 import {BrowserRouter} from 'react-router-dom'
 import { SWRConfig } from 'swr'
 
-const fetcher = (url)=>fetch(url).then((r)=>r.json)
+const fetcher = (url)=>fetch(url).then((r)=>r.json())
 
 createRoot(document.getElementById('root')).render(
 <SWRConfig value={{fetcher}}>

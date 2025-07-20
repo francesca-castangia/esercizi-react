@@ -22,7 +22,7 @@ import { CurrentLocation } from "./components/CurrentLocation";
       <Routes>
         <Route path="/" element={<Counter/>}/>
         <Route path="/form" element={<Form/>}/>
-        <Route path="/user" element={<GithubUser/>}/>
+        <Route path="/user" element={<GithubUser />}/>
         <Route path="/clocation" element={<CurrentLocation/>}/>
       </Routes>
       
